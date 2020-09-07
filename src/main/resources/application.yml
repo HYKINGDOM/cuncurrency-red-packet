@@ -1,0 +1,29 @@
+
+
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/red_packet?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: alibabaRoot
+
+  # redis
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 500
+
+
+server:
+  port: 8089
+
+# MyBatis配置
+mybatis:
+  # 搜索指定包别名
+  typeAliasesPackage: com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
