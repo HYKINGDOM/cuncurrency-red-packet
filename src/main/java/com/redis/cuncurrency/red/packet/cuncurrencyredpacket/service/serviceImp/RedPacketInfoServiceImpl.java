@@ -5,6 +5,8 @@ import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.RedPacketInf
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.service.RedPacketInfoService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RedPacketInfoServiceImpl implements RedPacketInfoService {
 
@@ -15,7 +17,19 @@ public class RedPacketInfoServiceImpl implements RedPacketInfoService {
     }
 
     @Override
-    public RedPacketInfo getRedPacketInfo(RedPacketInfo redPacketInfo) {
+    public List<RedPacketInfo> getRedPacketInfo(RedPacketInfo redPacketInfo) {
         return redPacketInfoMapper.getRedPacketInfo(redPacketInfo);
+    }
+
+    @Override
+    public Boolean createRedPacketInfo(RedPacketInfo redPacketInfo) {
+
+        try {
+            redPacketInfoMapper.createRedPacketInfo(redPacketInfo);
+        }catch (Exception e){
+            e.getMessage();
+            return false;
+        }
+        return true;
     }
 }

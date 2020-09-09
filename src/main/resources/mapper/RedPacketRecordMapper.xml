@@ -2,16 +2,74 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cyb.ybmobileredis.mapper.RedPacketRecordMapper">
-    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-         INSERT INTO red_packet_record (amount, nick_name, img_url, uid, red_packet_id
-            , create_time, update_time)
-        VALUES (#{amount,jdbcType=INTEGER},
-        #{nickName,jdbcType=VARCHAR},
-        #{imgUrl,jdbcType=VARCHAR},
-        #{uid,jdbcType=INTEGER},
-        #{redPacketId,jdbcType=BIGINT}
-            , #{createTime,jdbcType=TIMESTAMP},
-            #{updateTime,jdbcType=TIMESTAMP})
+<mapper namespace="com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.RedPacketRecordMapper">
+    <select id="getRedPacketRedcord"
+            resultType="com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain.RedPacketRecord"
+            parameterType="com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.RedPacketRecordMapper">
+        SELECT
+        rpr.id,
+        rpr.amount,
+        rpr.nick_name,
+        rpr.img_url,
+        rpr.uid,
+        rpr.red_packet_id,
+        rpr.create_time,
+        rpr.update_time
+        FROM
+        red_packet_record AS rpr
+
+        <where>
+            <if test="id != null">
+                rpr.id = #{id}
+            </if>
+            <if test="amount != null">
+                and rpr.amount = #{amount}
+            </if>
+
+            <if test="nickName != null">
+                and rpr.nick_name = #{nickName}
+            </if>
+
+            <if test="imgUrl != null">
+                and rpr.img_url = #{imgUrl}
+            </if>
+
+            <if test="uid != null">
+                and rpr.uid = #{uid}
+            </if>
+
+            <if test="redPacketId != null">
+                and rpr.red_packet_id = #{redPacketId}
+            </if>
+
+            <if test="createTime != null">
+                and rpr.create_time = #{createTime}
+            </if>
+
+            <if test="updateTime != null">
+                and rpr.update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <insert id="createRedPacketRecord" parameterType="com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.RedPacketRecordMapper"
+            useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+
+                 INSERT INTO red_packet_record (
+                     amount, nick_name,
+                     img_url,
+                     uid,
+                     red_packet_id,
+                     create_time,
+                     update_time)
+                VALUES (
+                    #{amount,jdbcType=INTEGER},
+                    #{nickName,jdbcType=VARCHAR},
+                    #{imgUrl,jdbcType=VARCHAR},
+                    #{uid,jdbcType=INTEGER},
+                    #{redPacketId,jdbcType=BIGINT},
+                    #{createTime,jdbcType=TIMESTAMP},
+                    #{updateTime,jdbcType=TIMESTAMP})
+
     </insert>
 </mapper>

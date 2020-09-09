@@ -55,14 +55,11 @@
                 and rpi.update_time = #{updateTime}
             </if>
         </where>
-
-
-
-
     </select>
 
 
-    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+    <insert id="createRedPacketInfo" parameterType="com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.RedPacketInfoMapper"
+            useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         insert into red_packet_info (
         red_packet_id,
         total_amount,
@@ -82,4 +79,5 @@
         #{createTime,jdbcType=TIMESTAMP},
         #{updateTime,jdbcType=TIMESTAMP})
     </insert>
+
 </mapper>
