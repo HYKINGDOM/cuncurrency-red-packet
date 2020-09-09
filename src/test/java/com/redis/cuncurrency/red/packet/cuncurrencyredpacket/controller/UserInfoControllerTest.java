@@ -6,6 +6,7 @@ import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.UserInfoMapp
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class UserInfoControllerTest extends BaseApiTest {
@@ -25,6 +26,8 @@ class UserInfoControllerTest extends BaseApiTest {
                 .extract().body().jsonPath().getString("id");
         UserInfo userInfoData = userInfoMapper.getUserInfoByUserId(userInfo.getId());
         assertNotNull(userInfoData);
+        assertNotNull(id);
+        assertEquals(userInfoData.getId(), Integer.valueOf(id));
     }
 
 }
