@@ -1,5 +1,7 @@
 package com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import java.util.Date;
 
 /**
@@ -37,6 +39,23 @@ public class UserInfo {
      * 修改时间
      */
     private Date updateTime;
+
+
+    public UserInfo(Integer id, String userName, String nickName, String imgUrl, Integer member, Date createTime, Date updateTime) {
+        this.id = id;
+        this.userName = userName;
+        this.nickName = nickName;
+        this.imgUrl = imgUrl;
+        this.member = member;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
+
+
+    public static UserInfo of(Integer id, String userName, String nickName, String imgUrl, Integer member, Date createTime, Date updateTime) {
+        return new UserInfo(id, userName, nickName, imgUrl, member, createTime, updateTime);
+    }
+
 
     public Integer getId() {
         return id;
