@@ -2,15 +2,84 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cyb.ybmobileredis.mapper.RedPacketInfoMapper">
+<mapper namespace="com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.RedPacketInfoMapper">
+
+    <select id="getRedPacketInfo" resultType="com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain.RedPacketInfo"
+            parameterType="com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.RedPacketInfoMapper">
+        SELECT
+            rpi.id,
+            rpi.red_packet_id,
+            rpi.total_amount,
+            rpi.total_packet,
+            rpi.remaining_amount,
+            rpi.remaining_packet,
+            rpi.uid,
+            rpi.create_time,
+            rpi.update_time
+        FROM
+            red_packet_info AS rpi
+
+        <where>
+            <if test="id != null">
+                rpi.id = #{id}
+            </if>
+            <if test="redPacketId != null">
+               and rpi.red_packet_id = #{redPacketId}
+            </if>
+
+            <if test="totalAmount != null">
+                and rpi.total_amount = #{totalAmount}
+            </if>
+
+            <if test="totalPacket != null">
+                and rpi.total_packet = #{totalPacket}
+            </if>
+
+            <if test="remainingAmount != null">
+                and rpi.remaining_amount = #{remainingAmount}
+            </if>
+
+            <if test="remainingPacket != null">
+                and rpi.remaining_packet = #{remainingPacket}
+            </if>
+
+            <if test="uid != null">
+                and rpi.uid = #{uid}
+            </if>
+
+            <if test="createTime != null">
+                and rpi.create_time = #{createTime}
+            </if>
+
+            <if test="updateTime != null">
+                and rpi.update_time = #{updateTime}
+            </if>
+        </where>
+
+
+
+
+    </select>
+
+
     <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-        insert into red_packet_info (red_packet_id, total_amount,
-        total_packet, remaining_amount,
-        remaining_packet, uid,
-        create_time, update_time)
-        values (#{redPacketId,jdbcType=BIGINT}, #{totalAmount,jdbcType=INTEGER},
-        #{totalPacket,jdbcType=INTEGER}, #{remainingAmount,jdbcType=INTEGER},
-        #{remainingPacket,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER},
-        #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+        insert into red_packet_info (
+        red_packet_id,
+        total_amount,
+        total_packet,
+        remaining_amount,
+        remaining_packet,
+        uid,
+        create_time,
+        update_time)
+        values (
+        #{redPacketId,jdbcType=BIGINT},
+        #{totalAmount,jdbcType=INTEGER},
+        #{totalPacket,jdbcType=INTEGER},
+        #{remainingAmount,jdbcType=INTEGER},
+        #{remainingPacket,jdbcType=INTEGER},
+        #{uid,jdbcType=INTEGER},
+        #{createTime,jdbcType=TIMESTAMP},
+        #{updateTime,jdbcType=TIMESTAMP})
     </insert>
 </mapper>
