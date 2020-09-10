@@ -40,6 +40,8 @@ public class UserInfo {
      */
     private Date updateTime;
 
+    public UserInfo() {
+    }
 
     public UserInfo(Integer id, String userName, String nickName, String imgUrl, Integer member, Date createTime, Date updateTime) {
         this.id = id;

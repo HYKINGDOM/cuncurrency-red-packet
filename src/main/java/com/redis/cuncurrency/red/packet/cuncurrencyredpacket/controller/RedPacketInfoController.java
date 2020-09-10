@@ -3,7 +3,6 @@ package com.redis.cuncurrency.red.packet.cuncurrencyredpacket.controller;
 
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain.RedPacketInfo;
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.service.RedPacketInfoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

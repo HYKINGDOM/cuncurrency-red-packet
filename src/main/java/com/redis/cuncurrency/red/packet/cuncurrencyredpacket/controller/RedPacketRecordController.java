@@ -1,7 +1,6 @@
 package com.redis.cuncurrency.red.packet.cuncurrencyredpacket.controller;
 
 
-import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain.RedPacketInfo;
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain.RedPacketRecord;
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.service.RedPacketRecordService;
 import org.springframework.beans.factory.annotation.Autowired;

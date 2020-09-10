@@ -42,4 +42,22 @@ public abstract class BaseApiTest {
                 .config(RestAssuredMockMvcConfig.config().encoderConfig(new EncoderConfig().appendDefaultContentCharsetToContentTypeIfUndefined(false)))
                 .config(RestAssuredMockMvcConfig.config().logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails()));
     }
+
+    public String randomName() {
+        int min = 3;
+        int max = 9;
+        String name;
+        char[] nameChar;
+        //名字最长为max个,最短为min个
+        int nameLength = (int) (Math.random() * (max - min + 1)) + min;
+        nameChar = new char[nameLength];
+        //生成大写首字母
+        nameChar[0] = (char) (Math.random() * 26 + 65);
+        for (int i = 1; i < nameLength; i++) {
+            nameChar[i] = (char) (Math.random() * 26 + 97);
+        }
+        name = new String(nameChar);
+        return name;
+    }
+
 }

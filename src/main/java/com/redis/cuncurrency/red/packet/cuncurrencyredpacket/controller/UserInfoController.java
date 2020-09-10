@@ -3,10 +3,9 @@ package com.redis.cuncurrency.red.packet.cuncurrencyredpacket.controller;
 
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain.UserInfo;
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.service.UserInfoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 获取用户信息接口
@@ -23,9 +22,16 @@ public class UserInfoController {
         this.userInfoService = userInfoService;
     }
 
-    @GetMapping("/{userId}")
-    public UserInfo getUserInfoByUserId(@PathVariable int userId) {
-        return userInfoService.getUserInfoByUserId(userId);
+    @GetMapping("")
+    public List<UserInfo> getUserInfoByUserId(@RequestBody UserInfo userInfo) {
+        return userInfoService.getUserInfoByUserId(userInfo);
     }
+
+
+    @PostMapping("")
+    public Boolean createUserInfoByUserId(@RequestBody UserInfo userInfo) {
+        return userInfoService.CreateUserInfoByUserId(userInfo);
+    }
+
 
 }

@@ -6,6 +6,8 @@ import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.service.UserInfoSer
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
@@ -15,7 +17,18 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 
     @Override
-    public UserInfo getUserInfoByUserId(int userId) {
-        return userInfoMapper.getUserInfoByUserId(userId);
+    public List<UserInfo> getUserInfoByUserId(UserInfo userInfo) {
+        return userInfoMapper.getUserInfoByUserId(userInfo);
+    }
+
+    @Override
+    public Boolean CreateUserInfoByUserId(UserInfo userInfo) {
+        try {
+            userInfoMapper.CreateUserInfoByUserId(userInfo);
+        } catch (Exception e) {
+            e.getMessage();
+            return false;
+        }
+        return true;
     }
 }
