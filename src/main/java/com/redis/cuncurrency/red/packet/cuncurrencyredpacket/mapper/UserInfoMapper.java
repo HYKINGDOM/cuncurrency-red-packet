@@ -12,5 +12,5 @@ public interface UserInfoMapper {
 
     List<UserInfo> getUserInfoByUserId(UserInfo userInfo);
 
-    void CreateUserInfoByUserId(UserInfo userInfo);
+    void createUserInfoByUserId(UserInfo userInfo);
 }

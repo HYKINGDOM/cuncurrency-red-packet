@@ -19,17 +19,17 @@
             parameterType="com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.UserInfoMapper"
             resultType="com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain.UserInfo">
         SELECT
-        su.id,
-        su.user_name,
-        su.nick_name,
-        su.img_url,
-        su.member,
-        su.update_time,
-        su.create_time
+            su.id,
+            su.user_name,
+            su.nick_name,
+            su.img_url,
+            su.member,
+            su.update_time,
+            su.create_time
         FROM
         sys_user AS su
         <where>
-            <if test="id != null">
+            <if test="id != null and id != ''">
                 su.id = #{id}
             </if>
             <if test="userName != null">
@@ -53,7 +53,7 @@
         </where>
     </select>
 
-    <insert id="CreateUserInfoByUserId"
+    <insert id="createUserInfoByUserId"
             parameterType="com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.UserInfoMapper"
             useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 
@@ -62,15 +62,16 @@
                             nick_name,
                             img_url,
                             member,
-                            update_time,
-                            create_time
+                            create_time,
+                            update_time
                         )
                         values (
-                        #{user_name,jdbcType=VARCHAR},
-                        #{nick_name,jdbcType=VARCHAR},
-                        #{img_url,jdbcType=VARCHAR},
-                        #{member,jdbcType=INTEGER},
-                        #{createTime,jdbcType=TIMESTAMP},
-                        #{updateTime,jdbcType=TIMESTAMP})
+                            #{userName,jdbcType=VARCHAR},
+                            #{nickName,jdbcType=VARCHAR},
+                            #{imgUrl,jdbcType=VARCHAR},
+                            #{member,jdbcType=INTEGER},
+                            #{createTime,jdbcType=TIMESTAMP},
+                            #{updateTime,jdbcType=TIMESTAMP}
+                        )
     </insert>
 </mapper>

@@ -58,6 +58,13 @@ public class UserInfo {
         return new UserInfo(id, userName, nickName, imgUrl, member, createTime, updateTime);
     }
 
+    public Integer getMember() {
+        return member;
+    }
+
+    public void setMember(Integer member) {
+        this.member = member;
+    }
 
     public Integer getId() {
         return id;
@@ -105,5 +112,19 @@ public class UserInfo {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", member=" + member +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

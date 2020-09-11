@@ -11,5 +11,5 @@ public interface UserInfoService {
 
     List<UserInfo> getUserInfoByUserId(UserInfo userId);
 
-    Boolean CreateUserInfoByUserId(UserInfo userInfo);
+    Boolean createUserInfoByUserId(UserInfo userInfo);
 }

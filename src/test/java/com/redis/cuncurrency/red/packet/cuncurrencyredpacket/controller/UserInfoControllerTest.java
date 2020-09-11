@@ -11,8 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class UserInfoControllerTest extends BaseApiTest {
 
@@ -44,22 +43,26 @@ class UserInfoControllerTest extends BaseApiTest {
         String randomUserName = randomName();
         String randomNickName = randomName();
         UserInfo userInfoMock = UserInfo.of(null, randomUserName, randomNickName, "/img/first.jpg", 1, new Date(), new Date());
-        ResponseBodyExtractionOptions body = given()
+        System.out.println(userInfoMock.toString());
+        String aBoolean = given()
                 .contentType("application/json")
                 .body(userInfoMock)
                 .when()
-                .post("/api/user/")
+                .post("/api/user")
                 .then()
-                .statusCode(200).extract().body();
-
+                .statusCode(200).extract().body().asString().trim();
+        assertTrue(Boolean.parseBoolean(aBoolean));
+        System.out.println(userInfoMock.toString());
+        //userInfoMock.setId(null);
+        userInfoMock.setCreateTime(null);
+        userInfoMock.setUpdateTime(null);
         List<UserInfo> userInfoList = userInfoMapper.getUserInfoByUserId(userInfoMock);
+        System.out.println(userInfoMock.toString());
         assertNotNull(userInfoList);
         UserInfo userInfo = userInfoList.get(0);
 
         assertEquals(userInfo.getUserName(), userInfoMock.getUserName());
         assertEquals(userInfo.getNickName(), userInfoMock.getNickName());
-
-
     }
 
 }

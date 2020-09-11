@@ -30,7 +30,7 @@ public class UserInfoController {
 
     @PostMapping("")
     public Boolean createUserInfoByUserId(@RequestBody UserInfo userInfo) {
-        return userInfoService.CreateUserInfoByUserId(userInfo);
+        return userInfoService.createUserInfoByUserId(userInfo);
     }
 
 

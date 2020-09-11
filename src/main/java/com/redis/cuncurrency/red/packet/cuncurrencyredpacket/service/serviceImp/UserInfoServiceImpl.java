@@ -22,9 +22,9 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public Boolean CreateUserInfoByUserId(UserInfo userInfo) {
+    public Boolean createUserInfoByUserId(UserInfo userInfo) {
         try {
-            userInfoMapper.CreateUserInfoByUserId(userInfo);
+            userInfoMapper.createUserInfoByUserId(userInfo);
         } catch (Exception e) {
             e.getMessage();
             return false;
