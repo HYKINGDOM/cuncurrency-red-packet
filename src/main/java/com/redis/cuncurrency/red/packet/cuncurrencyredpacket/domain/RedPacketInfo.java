@@ -46,6 +46,26 @@ public class RedPacketInfo {
      */
     private Date updateTime;
 
+    public RedPacketInfo() {
+    }
+
+    public RedPacketInfo(Integer id, Long redPacketId, Integer totalAmount, Integer totalPacket, Integer remainingAmount, Integer remainingPacket, Integer uid, Date createTime, Date updateTime) {
+        this.id = id;
+        this.redPacketId = redPacketId;
+        this.totalAmount = totalAmount;
+        this.totalPacket = totalPacket;
+        this.remainingAmount = remainingAmount;
+        this.remainingPacket = remainingPacket;
+        this.uid = uid;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
+
+
+    public static RedPacketInfo of(Integer id, Long redPacketId, Integer totalAmount, Integer totalPacket, Integer remainingAmount, Integer remainingPacket, Integer uid, Date createTime, Date updateTime) {
+        return new RedPacketInfo(id, redPacketId, totalAmount, totalPacket, remainingAmount, remainingPacket, uid, createTime, updateTime);
+    }
+
     public Integer getId() {
         return id;
     }

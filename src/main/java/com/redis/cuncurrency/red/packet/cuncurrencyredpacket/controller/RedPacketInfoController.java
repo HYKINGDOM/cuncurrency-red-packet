@@ -3,6 +3,7 @@ package com.redis.cuncurrency.red.packet.cuncurrencyredpacket.controller;
 
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain.RedPacketInfo;
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.service.RedPacketInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,12 +15,9 @@ import java.util.List;
 @RequestMapping("/api/red_packet_info")
 public class RedPacketInfoController {
 
+    @Autowired
+    private RedPacketInfoService redPacketInfoService;
 
-    private final RedPacketInfoService redPacketInfoService;
-
-    public RedPacketInfoController(RedPacketInfoService redPacketInfoService) {
-        this.redPacketInfoService = redPacketInfoService;
-    }
 
     @GetMapping("")
     public List<RedPacketInfo> getRedPacketInfo(@RequestBody RedPacketInfo redPacketInfo) {

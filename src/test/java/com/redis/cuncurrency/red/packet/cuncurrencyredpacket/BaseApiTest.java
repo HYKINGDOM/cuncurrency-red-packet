@@ -60,4 +60,9 @@ public abstract class BaseApiTest {
         return name;
     }
 
+    public Integer randomInt(int max) {
+        int min = 1;
+        return (int) (Math.random() * (max - min) + min);
+    }
+
 }

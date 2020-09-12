@@ -3,7 +3,6 @@ package com.redis.cuncurrency.red.packet.cuncurrencyredpacket.controller;
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.BaseApiTest;
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain.UserInfo;
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.UserInfoMapper;
-import io.restassured.response.ResponseBodyExtractionOptions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -43,7 +42,6 @@ class UserInfoControllerTest extends BaseApiTest {
         String randomUserName = randomName();
         String randomNickName = randomName();
         UserInfo userInfoMock = UserInfo.of(null, randomUserName, randomNickName, "/img/first.jpg", 1, new Date(), new Date());
-        System.out.println(userInfoMock.toString());
         String aBoolean = given()
                 .contentType("application/json")
                 .body(userInfoMock)
@@ -52,12 +50,9 @@ class UserInfoControllerTest extends BaseApiTest {
                 .then()
                 .statusCode(200).extract().body().asString().trim();
         assertTrue(Boolean.parseBoolean(aBoolean));
-        System.out.println(userInfoMock.toString());
-        //userInfoMock.setId(null);
         userInfoMock.setCreateTime(null);
         userInfoMock.setUpdateTime(null);
         List<UserInfo> userInfoList = userInfoMapper.getUserInfoByUserId(userInfoMock);
-        System.out.println(userInfoMock.toString());
         assertNotNull(userInfoList);
         UserInfo userInfo = userInfoList.get(0);
 
