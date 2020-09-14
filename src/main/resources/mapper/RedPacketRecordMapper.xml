@@ -56,7 +56,8 @@
             useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 
                  INSERT INTO red_packet_record (
-                     amount, nick_name,
+                     amount,
+                     nick_name,
                      img_url,
                      uid,
                      red_packet_id,

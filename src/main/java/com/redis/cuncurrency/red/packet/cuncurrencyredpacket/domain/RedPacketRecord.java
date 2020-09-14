@@ -41,6 +41,24 @@ public class RedPacketRecord {
      */
     private Date updateTime;
 
+    public RedPacketRecord() {
+    }
+
+    public RedPacketRecord(Integer id, Integer amount, String nickName, String imgUrl, Integer uid, Long redPacketId, Date createTime, Date updateTime) {
+        this.id = id;
+        this.amount = amount;
+        this.nickName = nickName;
+        this.imgUrl = imgUrl;
+        this.uid = uid;
+        this.redPacketId = redPacketId;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
+
+    public static RedPacketRecord of(Integer id, Integer amount, String nickName, String imgUrl, Integer uid, Long redPacketId, Date createTime, Date updateTime) {
+        return new RedPacketRecord(id, amount, nickName, imgUrl, uid, redPacketId, createTime, updateTime);
+    }
+
     public Integer getId() {
         return id;
     }
