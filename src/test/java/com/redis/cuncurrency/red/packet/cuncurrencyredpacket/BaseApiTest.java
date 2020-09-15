@@ -25,8 +25,10 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 //@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public abstract class BaseApiTest {
 
-    @Autowired
 
+    private static final Base64.Encoder encoder = Base64.getUrlEncoder();
+
+    @Autowired
     protected WebApplicationContext context;
 
     @BeforeEach
@@ -67,8 +69,6 @@ public abstract class BaseApiTest {
         return (int) (Math.random() * (max - min) + min);
     }
 
-
-    private static final Base64.Encoder encoder = Base64.getUrlEncoder();
 
     public static String newBase64Uuid() {
         UUID uuid = UUID.randomUUID();

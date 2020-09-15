@@ -1,7 +1,6 @@
 package com.redis.cuncurrency.red.packet.cuncurrencyredpacket.controller;
 
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.BaseApiTest;
-import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain.RedPacketInfo;
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.domain.RedPacketRecord;
 import com.redis.cuncurrency.red.packet.cuncurrencyredpacket.mapper.RedPacketRecordMapper;
 import org.junit.jupiter.api.Test;
